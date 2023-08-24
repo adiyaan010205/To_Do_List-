@@ -1,0 +1,44 @@
+<%- include("partials/header.ejs") %> 
+
+
+<div class="container">
+    <div class="Head">
+        <% if(locals.Date){ %>
+            <p><%= Date %></p>
+        <% } else { %>
+            <p>Work List</p>
+        <% } %> 
+    </div>
+
+    <div class="box">
+    <% list.forEach((task,index) =>{ %>
+        <div class="item">
+            <input type="checkbox" id="check">
+            <p id="data"><%= task %></p>
+            <a href="/delete/<%= index %>/<%= encodeURIComponent(task) %>" id="delete">✔</a>
+            
+        </div>
+    <% }); %>
+    </div>
+
+    <% if(locals.Todays_List){ %>
+        <form action="/" method="POST" class="form">
+            <input type="text" name="item" id="item" placeholder="New Item" required>
+            <button type="submit" name="list" value="today">+</button>  
+        </form>
+    <% } else if(locals.Work_List) { %>
+        <form action="/work" method="POST" class="form">
+            <input type="text" name="item" id="item" placeholder="New Item" required>
+            <button type="submit" name="list" value="work">+</button>  
+        </form>
+    <% } %>
+
+</div>
+
+<script>
+    document.getElementById("#delete").addEventListener("click",function(){
+        
+    });
+</script>
+
+<%- include("partials/footer.ejs") %>
