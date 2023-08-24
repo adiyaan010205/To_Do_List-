@@ -29,7 +29,7 @@ header{
     left: 0;
     top:0;
     right: 0;
-    height: 60px;
+    max-height: 60px;
     display: flex;
     align-items: center;
     font-size: 1.2rem;
@@ -181,9 +181,20 @@ footer{
 }
 
 
+@media (max-width : 480px) {
+    
+    header{
+        min-height: 60px;
+    }
 
+    header li{
+        margin: 10px;
+    }
 
-
+    .Head , .form , .item{
+        width: 330px;
+    }
+}
 
 
 
